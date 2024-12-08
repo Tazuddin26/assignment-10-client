@@ -29,20 +29,18 @@ const AuthProvider = ({ children }) => {
 
   const signInWithGoogle = () => {
     return signInWithPopup(auth, GoogleAuth);
-  }
-
-
+  };
 
   const signOutUser = () => {
     return signOut(auth);
-  }
+  };
   const profileManage = (name, image) => {
-    setLoading(true); 
+    setLoading(true);
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: image,
-    })
-  }
+    });
+  };
 
   useEffect(() => {
     const disconnect = onAuthStateChanged(auth, (currentUser) => {
@@ -50,15 +48,13 @@ const AuthProvider = ({ children }) => {
         console.log("Current user loggedin");
         setUser(currentUser);
       } else {
-
         setUser(null);
       }
       setLoading(false);
-       return () => {
-         disconnect();
-       };
+      return () => {
+        disconnect();
+      };
     });
-   
   }, []);
 
   const authInfo = {

@@ -36,53 +36,57 @@ const Navbar = () => {
           Add Review
         </NavLink>
       </li>
-      <li className=" ">
+
+      <>
+        <li className="">
+          <NavLink
+            to="/allReview"
+            className={({ isActive }) =>
+              `${isActive ? "underline text-amber-600" : ""}`
+            }
+          >
+            All Reviews
+          </NavLink>
+        </li>
+      </>
+      {/* <li className="">
         <NavLink
+          to={`/users`}
           className={({ isActive }) =>
             `${isActive ? "underline text-amber-600" : ""}`
           }
         >
-          My Reviews
+          Users
         </NavLink>
-      </li>
-      <li className="">
-        <NavLink
-          className={({ isActive }) =>
-            `${isActive ? "underline text-amber-600" : ""}`
-          }
-        >
-          Game WatchList
-        </NavLink>
-      </li>
-      <li className="">
-        <NavLink
-          to={`/updateReview`}
-          className={({ isActive }) =>
-            `${isActive ? "underline text-amber-600" : ""}`
-          }
-        >
-          Update Review
-        </NavLink>
-      </li>
+      </li> */}
       {user && (
         <>
-          <li className="">
+          <li className=" ">
             <NavLink
-              to="/allReview"
+              to={`/myReviews/${user.email}`}
               className={({ isActive }) =>
                 `${isActive ? "underline text-amber-600" : ""}`
               }
             >
-              All Reviews
+              MyReviews
+            </NavLink>
+          </li>
+          <li className=" ">
+            <NavLink
+              to={`/watchList/${user.email}`}
+              className={({ isActive }) =>
+                `${isActive ? "underline text-amber-600" : ""}`
+              }
+            >
+              WatchList
             </NavLink>
           </li>
         </>
       )}
     </>
   );
-
   return (
-    <div className="navbar bg-sky-100 ">
+    <div className="navbar bg-slate-700 text-white max-w-7xl mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -103,7 +107,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-slate-600 rounded-box z-[10] mt-3 w-52 p-2 shadow-xl"
           >
             {menuLink}
           </ul>
@@ -111,7 +115,7 @@ const Navbar = () => {
         <a className="btn btn-ghost text-xl">GEAMER</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{menuLink}</ul>
+        <ul className="menu menu-horizontal px-1 text-base">{menuLink}</ul>
       </div>
       <div className="navbar-end">
         <div className=" flex items-center gap-2">

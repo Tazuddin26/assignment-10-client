@@ -1,12 +1,15 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const ReviewCard = ({ review }) => {
+  const { user } = useContext(AuthContext);
   const { _id, name, email, image, title, description, rating, year, genres } =
     review;
 
   return (
-    <div className="card-compact bg-base-100 shadow-xl rounded-xl border">
-      <figure className="flex items-center gap-8 px-3 py-3 ">
+    <div className="card-compact bg-slate-700 shadow-xl rounded-xl border mt-5">
+      <figure className="flex items-center gap-8 px-3 py-3 text-white">
         <img src={image} alt="Shoes" className="w-28 h-[150px] rounded-xl" />
         <div>
           <h2 className="card-title">{title}</h2>
@@ -22,10 +25,17 @@ const ReviewCard = ({ review }) => {
           </div>
         </div>
       </figure>
-      <div className="card-body">
+      <div className="card-body text-white">
         <p>{description}</p>
+        <div>
+          <img src={user?.photoURL} alt="" className="w-12 rounded-full" />
+        </div>
+
         <div className="card-actions justify-end">
-          <NavLink to={`/reviewDetails/${_id}`} className="btn btn-outline">
+          <NavLink
+            to={`/reviewDetails/${_id}`}
+            className="btn btn-outline bg-amber-900 text-white"
+          >
             <button>Explore Details</button>
           </NavLink>
         </div>

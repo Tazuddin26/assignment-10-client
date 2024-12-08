@@ -1,6 +1,9 @@
+import { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const UpdateReview = () => {
+  const { user } = useContext(AuthContext);
   const loadedReview = useLoaderData();
   const { _id, name, email, image, title, description, rating, year, genres } =
     loadedReview;
@@ -36,136 +39,143 @@ const UpdateReview = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // sweet Alert set by data.insertedId
+        e.target.reset();
       });
   };
   return (
-    <div className="bg-sky-200  max-w-7xl mx-auto border mt-10">
+    <div className="bg-slate-800  max-w-7xl mx-auto border mt-10">
       <div className="border py-5 bg-info text-center">
-        <p className="text-2xl">Add Review Area</p>
+        <p className="text-2xl">Update Review Area</p>
       </div>
       <div className=" flex my-10 justify-center ">
-        <div className=" bg-base-100 w-full max-w-sm shrink-0 shadow-2xl ">
-          <form onSubmit={handleUpdateReview} className="card-body">
-            <h1 className="text-2xl font-bold text-center text-gray-600">
-              Add Review
-            </h1>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Name</span>
-              </label>
-              <input
-                type="text"
-                name="name"
-                defaultValue={name}
-                placeholder="Name"
-                className="input input-bordered"
-                required
-                // readOnly
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input
-                type="email"
-                name="email"
-                defaultValue={email}
-                placeholder="email"
-                className="input input-bordered"
-                required
-                // readOnly
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Game Cover Image </span>
-              </label>
-              <input
-                type="text"
-                name="image"
-                defaultValue={image}
-                placeholder="PhotoURL"
-                className="input input-bordered"
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Game Title</span>
-              </label>
-              <input
-                type="text"
-                name="title"
-                defaultValue={title}
-                placeholder="Game-Title"
-                className="input input-bordered"
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Review Description</span>
-              </label>
-              <input
-                type="text"
-                name="description"
-                defaultValue={description}
-                placeholder="About Review"
-                className="input input-bordered"
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Rating</span>
-              </label>
-              <input
-                type="number"
-                name="rating"
-                defaultValue={rating}
-                placeholder="Rating Here"
-                className="input input-bordered"
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Publishing Year</span>
-              </label>
-              <input
-                type="text"
-                name="year"
-                defaultValue={year}
-                placeholder="Published"
-                className="input input-bordered"
-                required
-              />
-            </div>
+        <div className=" bg-slate-800 w-full max-w-2xl shrink-0 shadow-2xl border rounded-2xl">
+          <form onSubmit={handleUpdateReview} className="gap-5 ">
+            <div className="card-body flex-row ">
+              <div className="w-full">
+                <div className="form-control ">
+                  <label className="label ">
+                    <span className="label-text text-white">Name</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={user?.displayName}
+                    placeholder="Name"
+                    className="input input-bordered"
+                    required
+                    readOnly
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-white">Email</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={user?.email}
+                    placeholder="email"
+                    className="input input-bordered"
+                    required
+                    readOnly
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-white">
+                      Game Cover Image{" "}
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    name="image"
+                    defaultValue={image}
+                    placeholder="PhotoURL"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-white">Game Title</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="title"
+                    defaultValue={title}
+                    placeholder="Game-Title"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="w-full">
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-white">
+                      Review Description
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    name="description"
+                    defaultValue={description}
+                    placeholder="About Review"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-white">Rating</span>
+                  </label>
+                  <input
+                    type="number"
+                    name="rating"
+                    defaultValue={rating}
+                    placeholder="Rating Here"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-white">
+                      Publishing Year
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    name="year"
+                    defaultValue={year}
+                    placeholder="Published"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
 
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Genres</span>
-              </label>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-white">Genres</span>
+                  </label>
 
-              <select
-                // value={genres}
-                // onChange={(e) => setGenres(e.target.value)}
-                name="genres"
-                defaultValue={genres}
-                className="select select-bordered w-full max-w-xs"
-              >
-                <option disabled selected>
-                  Chosees Your Genres!
-                </option>
-                <option>Action</option>
-                <option>RPG</option>
-                <option>Adventure</option>
-              </select>
+                  <select
+                    name="genres"
+                    defaultValue={genres}
+                    className="select select-bordered w-full max-w-xs"
+                  >
+                    <option disabled selected>
+                      Chosees Your Genres!
+                    </option>
+                    <option value="action">Action</option>
+                    <option value="rpg">RPG</option>
+                    <option value="adventure">Adventure</option>
+                  </select>
+                </div>
+              </div>
             </div>
-
-            <div className="form-control mt-6 space-y-3">
+            <div className="form-control  mb-6 space-y-3 px-6">
               <button className="btn btn-info">Update</button>
             </div>
           </form>

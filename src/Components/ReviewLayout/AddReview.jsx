@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const AddReview = () => {
-  //   const [genres, setGenres] = useState("Chosees Your Genres");
+  const { user } = useContext(AuthContext);
+  
+
+  const [genres, setGenres] = useState("Chosees Your Genres");
   const handleSubmitReview = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -36,6 +40,8 @@ const AddReview = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        e.target.reset()
+        // sweet Alert set by data.insertedId
       });
   };
   return (
@@ -56,10 +62,11 @@ const AddReview = () => {
               <input
                 type="text"
                 name="name"
+                value={user?.displayName}
                 placeholder="Name"
                 className="input input-bordered"
                 required
-                // readOnly
+                readOnly
               />
             </div>
             <div className="form-control">
@@ -69,10 +76,11 @@ const AddReview = () => {
               <input
                 type="email"
                 name="email"
+                value={user?.email}
                 placeholder="email"
                 className="input input-bordered"
                 required
-                // readOnly
+                readOnly
               />
             </div>
             <div className="form-control">
@@ -150,9 +158,9 @@ const AddReview = () => {
                 <option disabled selected>
                   Chosees Your Genres!
                 </option>
-                <option>Action</option>
-                <option>RPG</option>
-                <option>Adventure</option>
+                <option value="action">Action</option>
+                <option value="rpg">RPG</option>
+                <option value="adventure">Adventure</option>
               </select>
             </div>
 

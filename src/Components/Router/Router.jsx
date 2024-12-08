@@ -9,6 +9,10 @@ import AllReview from "../ReviewLayout/AllReview";
 import AddReview from "../ReviewLayout/AddReview";
 import ReviewDetails from "../ReviewLayout/ReviewDetails";
 import UpdateReview from "../ReviewLayout/UpdateReview";
+import Users from "../Account/Users";
+import MyReviews from "../ReviewLayout/WatchList/MyReviews";
+import WatchReviewData from "../ReviewLayout/WatchList/WatchReviewData";
+import DarkLightToggle from "../../ThemeToggle/DarkLightToggle";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +23,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: () => fetch("http://localhost:5000/allReviews"),
       },
       {
         path: "/register",
@@ -28,23 +33,53 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login />,
       },
+      {
+        path: "/users",
+        element: (
+          <PrivateRoute>
+            <Users />
+          </PrivateRoute>
+        ),
+        loader: () => fetch(`http://localhost:5000/users`),
+      },
 
       {
         path: "/allReview",
-        element: (
-          <PrivateRoute>
-            <AllReview />
-          </PrivateRoute>
-        ),
+        element: <AllReview />,
         loader: () => fetch("http://localhost:5000/allReviews"),
       },
       {
+        path: "/myReviews/:email",
+        element: (
+          <PrivateRoute>
+            <MyReviews />
+          </PrivateRoute>
+        ),
+        loader: () => fetch(`http://localhost:5000/allReviews`),
+      },
+      {
+        path: "/watchList/:email",
+        element: (
+          <PrivateRoute>
+            <WatchReviewData />
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "/addReview",
-        element: <AddReview />,
+        element: (
+          <PrivateRoute>
+            <AddReview />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/reviewDetails/:id",
-        element: <ReviewDetails />,
+        element: (
+          <PrivateRoute>
+            <ReviewDetails />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/allReviews/${params.id}`),
       },
@@ -52,8 +87,12 @@ const router = createBrowserRouter([
         path: "/updateReview/:id",
         element: <UpdateReview />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allReviews${params.id}`),
+          fetch(`http://localhost:5000/allReviews/${params.id}`),
       },
+      // {
+      //   path: '/dark',
+      //   element:<DarkLightToggle/>
+      // }
     ],
   },
 ]);

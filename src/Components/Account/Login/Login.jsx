@@ -10,11 +10,24 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    const loginUser = { email, password };
-    console.log(loginUser);
     signInUser(email, password)
       .then((res) => {
         console.log(res);
+        const lastSignInTime = res?.user?.metadata?.lastSignInTime;
+         const lastLoginUser = { email, lastSignInTime };
+
+        fetch("http://localhost:5000/users", {
+          method: 'PATCH',
+          headers:{
+            'content-type':'application/json'
+        },
+          body: JSON.stringify(lastLoginUser)
+        })
+          .then(res => res.json())
+          .then(data => {
+          console.log('sign in info DB',data)
+        })
+        
         navigate("/");
         navigate(location.state.from);
         alert("successfully Login");

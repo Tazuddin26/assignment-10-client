@@ -12,10 +12,25 @@ const Register = () => {
     const email = form.email.value;
     const image = form.image.value;
     const password = form.password.value;
-    const signupUser = { name, email, image, password };
+
     createUser(email, password)
-        .then((res) => {
-          console.log('registration ',res)
+      .then((res) => {
+        const createdAt = res?.user?.metadata?.creationTime;
+        const signupUser = { name, email,image, createdAt };
+        console.log(signupUser);
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(signupUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            alert("successfully");
+          });
+
         profileManage(name, image);
         navigate("/");
       })
