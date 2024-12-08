@@ -1,36 +1,52 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { NavLink, useLoaderData } from "react-router-dom";
 import { MdOutlineDelete } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const MyReviews = () => {
   const { user } = useContext(AuthContext);
   const loadedReview = useLoaderData();
   const [reviews, setReviews] = useState(loadedReview);
-  // const { _id, name, email, image, title, description, rating, year, genres } =
-  //   reviews;
-  console.log(reviews);
 
   const handleDelete = (id) => {
-    console.log("deleted", id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    });
+ 
     fetch(`http://localhost:5000/allReviews/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        const deleteWatchReview = reviews.filter((review) => review._id !== id);
-        setReviews(deleteWatchReview);
+        console.log("first", data);
+        if (data.deletedCount < 0) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your Coffee has been deleted.",
+            icon: "success",
+          });
+
+          const deleteWatchReview = reviews.filter(
+            (review) => review._id !== id
+          );
+          setReviews(deleteWatchReview);
+        }
       });
   };
 
   return (
-    <div className="max-w-7xl mx-auto  mt-20 my-10 bg-slate-800">
+    <div className="max-w-7xl mx-auto  mt-10 my-10 bg-slate-800 rounded-2xl">
       Reviews: {reviews?.length || 0}
       <div className="overflow-x-auto p-4  ">
         <table className="table ">
-          {/* head */}
           <thead>
             <tr className="text-base text-white">
               <th>Select</th>
@@ -75,10 +91,7 @@ const MyReviews = () => {
                     />
                   </div>
                 </td>
-                <td className="text-base font-bold">
-                  {review.title}
-              
-                </td>
+                <td className="text-base font-bold">{review.title}</td>
                 <td className="flex items-center gap-2">
                   <div className="rating">
                     <input

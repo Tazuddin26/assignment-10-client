@@ -8,7 +8,7 @@ const ReviewCard = ({ review }) => {
     review;
 
   return (
-    <div className="card-compact bg-slate-700 shadow-xl rounded-xl border mt-5">
+    <div className="card-compact bg-slate-700 shadow-xl rounded-xl border mt-5 transition duration-150 hover:scale-110 hover:delay-500 hover:-translate-b-1 ">
       <figure className="flex items-center gap-8 px-3 py-3 text-white">
         <img src={image} alt="Shoes" className="w-28 h-[150px] rounded-xl" />
         <div>
@@ -22,6 +22,7 @@ const ReviewCard = ({ review }) => {
               />
             </div>
             <p className="text-lg"> {rating}</p>
+            <p>{year}</p>
           </div>
         </div>
       </figure>

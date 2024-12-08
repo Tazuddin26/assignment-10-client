@@ -12,7 +12,6 @@ import UpdateReview from "../ReviewLayout/UpdateReview";
 import Users from "../Account/Users";
 import MyReviews from "../ReviewLayout/WatchList/MyReviews";
 import WatchReviewData from "../ReviewLayout/WatchList/WatchReviewData";
-import DarkLightToggle from "../../ThemeToggle/DarkLightToggle";
 
 const router = createBrowserRouter([
   {
@@ -89,10 +88,6 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/allReviews/${params.id}`),
       },
-      // {
-      //   path: '/dark',
-      //   element:<DarkLightToggle/>
-      // }
     ],
   },
 ]);

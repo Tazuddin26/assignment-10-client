@@ -1,23 +1,37 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
-
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 const Register = () => {
   const { createUser, profileManage } = useContext(AuthContext);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const handleRegister = (e) => {
+    setError("");
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
     const image = form.image.value;
     const password = form.password.value;
-
+    if (password.length < 6) {
+      setError("Password Length must be at least 6 character");
+      return;
+    }
+    if (!/[a-z]/.test(password)) {
+      setError("Must have a Lowercase letter in the password ");
+      return;
+    }
+    if (!/[A-Z]/.test(password)) {
+      setError("Must have an Uppercase letter in the password ");
+      return;
+    }
     createUser(email, password)
       .then((res) => {
         const createdAt = res?.user?.metadata?.creationTime;
-        const signupUser = { name, email,image, createdAt };
-        console.log(signupUser);
+        const signupUser = { name, email, image, createdAt };
+
         fetch("http://localhost:5000/users", {
           method: "POST",
           headers: {
@@ -26,24 +40,20 @@ const Register = () => {
           body: JSON.stringify(signupUser),
         })
           .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            alert("successfully");
-          });
-
+          .then((data) => data);
+        toast.success("Successfully Registration !", {
+          position: "top-center",
+          autoClose: 3000,
+        });
         profileManage(name, image);
         navigate("/");
       })
-      .catch((error) => {
-        console.log("register error", error.message);
-      });
+      .catch((error) => error.message);
   };
 
   return (
-    <div className="bg-sky-200 min-h-screen max-w-7xl mx-auto border ">
-      <div className="border py-5 bg-info text-center">
-        <p className="text-2xl">User Mangement</p>
-      </div>
+    <div className=" min-h-screen max-w-7xl mx-auto ">
+
       {/* <div className="text-center mt-6">
         <h1 className="text-3xl font-bold text-gray-600">Registration now!</h1>
       </div> */}
@@ -102,8 +112,9 @@ const Register = () => {
               />
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-info">Register</button>
+              <button className="btn btn-outline bg-blue-950 text-white">Register</button>
             </div>
+            <p className="mx-auto text-red-600 text-sm">{error}</p>
             <label className="label ">
               <p className="text-end">
                 Have an account ?{" "}

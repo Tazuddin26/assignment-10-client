@@ -23,7 +23,7 @@ const Banner = () => {
   ];
 
   return (
-    <div className="slide-container w-11/12 mx-auto">
+    <div className="slide-container w-full mx-auto">
       <Fade>
         {fadeImages.map((fadeImage, index) => (
           <div key={index}>

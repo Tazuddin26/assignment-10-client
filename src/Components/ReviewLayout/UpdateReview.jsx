@@ -44,12 +44,12 @@ const UpdateReview = () => {
       });
   };
   return (
-    <div className="bg-slate-800  max-w-7xl mx-auto border mt-10">
-      <div className="border py-5 bg-info text-center">
-        <p className="text-2xl">Update Review Area</p>
+    <div className="bg-slate-800  max-w-7xl mx-auto mt-10">
+      <div className=" py-5 bg-blue-950 text-center">
+        <p className="text-2xl text-white">Update Review Area</p>
       </div>
-      <div className=" flex my-10 justify-center ">
-        <div className=" bg-slate-800 w-full max-w-2xl shrink-0 shadow-2xl border rounded-2xl">
+      <div className=" flex mb-10 justify-center ">
+        <div className=" bg-slate-800 w-full max-w-2xl shrink-0 shadow-2xl rounded-2xl">
           <form onSubmit={handleUpdateReview} className="gap-5 ">
             <div className="card-body flex-row ">
               <div className="w-full">
@@ -176,7 +176,7 @@ const UpdateReview = () => {
               </div>
             </div>
             <div className="form-control  mb-6 space-y-3 px-6">
-              <button className="btn btn-info">Update</button>
+              <button className="btn btn-outline bg-blue-950 text-white">Update</button>
             </div>
           </form>
         </div>
