@@ -18,13 +18,13 @@ const Home = () => {
           theme === "light"
             ? "bg-white text-black"
             : "bg-slate-900 text-primary-content  "
-        }`}
+        } `}
       >
         <h1>{theme === "light" ? "" : ""}</h1>
         <p className="text-3xl ml-5 mt-10 ">Populer game</p>
       </div>
       <Marquee pauseOnHover={true} className="space-x-4 cursor-pointer mb-10">
-        <div className="flex gap-4 mt-10">
+        <div className="flex gap-4 mt-10  ">
           {loadedGame?.length === 0
             ? "There is no game Data in Server"
             : loadedGame.map((game) => (

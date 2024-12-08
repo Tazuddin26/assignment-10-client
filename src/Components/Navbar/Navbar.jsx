@@ -20,41 +20,39 @@ const Navbar = () => {
 
   const menuLink = (
     <>
-      <li className="">
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            `${isActive ? "underline text-amber-600" : ""}`
-          }
-        >
-          Home
-        </NavLink>
-      </li>
-      <li className="">
-        <NavLink
-          to="/addReview"
-          className={({ isActive }) =>
-            `${isActive ? "underline text-amber-600" : ""}`
-          }
-        >
-          Add Review
-        </NavLink>
-      </li>
-
-      <>
-        <li className="">
-          <NavLink
-            to="/allReview"
-            className={({ isActive }) =>
-              `${isActive ? "underline text-amber-600" : ""}`
-            }
-          >
-            All Reviews
-          </NavLink>
-        </li>
-      </>
+      <></>
       {user && (
         <>
+          <li className="">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `${isActive ? "underline text-amber-600" : ""}`
+              }
+            >
+              Home
+            </NavLink>
+          </li>
+          <li className="">
+            <NavLink
+              to="/addReview"
+              className={({ isActive }) =>
+                `${isActive ? "underline text-amber-600" : ""}`
+              }
+            >
+              Add Review
+            </NavLink>
+          </li>
+          <li className="">
+            <NavLink
+              to="/allReview"
+              className={({ isActive }) =>
+                `${isActive ? "underline text-amber-600" : ""}`
+              }
+            >
+              All Reviews
+            </NavLink>
+          </li>
           <li className=" ">
             <NavLink
               to={`/myReviews/${user.email}`}
