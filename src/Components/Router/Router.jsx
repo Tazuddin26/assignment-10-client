@@ -22,7 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:5000/allReviews"),
+        loader: () =>
+          fetch(
+            "https://assignment-10-server-beta-steel.vercel.app/allReviews"
+          ),
       },
       {
         path: "/register",
@@ -39,7 +42,8 @@ const router = createBrowserRouter([
             <Users />
           </PrivateRoute>
         ),
-        loader: () => fetch(`http://localhost:5000/users`),
+        loader: () =>
+          fetch(`https://assignment-10-server-beta-steel.vercel.app/users`),
       },
 
       {
@@ -50,7 +54,10 @@ const router = createBrowserRouter([
             <AllReview />
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/allReviews"),
+        loader: () =>
+          fetch(
+            "https://assignment-10-server-beta-steel.vercel.app/allReviews"
+          ),
       },
       {
         path: "/myReviews/:email",
@@ -59,7 +66,10 @@ const router = createBrowserRouter([
             <MyReviews />
           </PrivateRoute>
         ),
-        loader: () => fetch(`http://localhost:5000/allReviews`),
+        loader: () =>
+          fetch(
+            `https://assignment-10-server-beta-steel.vercel.app/allReviews`
+          ),
       },
       {
         path: "/watchList/:email",
@@ -85,13 +95,17 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allReviews/${params.id}`),
+          fetch(
+            `https://assignment-10-server-beta-steel.vercel.app/allReviews/${params.id}`
+          ),
       },
       {
         path: "/updateReview/:id",
         element: <UpdateReview />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allReviews/${params.id}`),
+          fetch(
+            `https://assignment-10-server-beta-steel.vercel.app/allReviews/${params.id}`
+          ),
       },
     ],
   },

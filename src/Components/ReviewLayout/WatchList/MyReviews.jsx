@@ -19,27 +19,30 @@ const MyReviews = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    });
- 
-    fetch(`http://localhost:5000/allReviews/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("first", data);
-        if (data.deletedCount < 0) {
-          Swal.fire({
-            title: "Deleted!",
-            text: "Your Coffee has been deleted.",
-            icon: "success",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(
+          `https://assignment-10-server-beta-steel.vercel.app/allReviews/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your Coffee has been deleted.",
+                icon: "success",
+              });
+              const deleteWatchReview = reviews.filter(
+                (review) => review._id !== id
+              );
+              setReviews(deleteWatchReview);
+            }
           });
-
-          const deleteWatchReview = reviews.filter(
-            (review) => review._id !== id
-          );
-          setReviews(deleteWatchReview);
-        }
-      });
+      }
+    });
   };
 
   return (

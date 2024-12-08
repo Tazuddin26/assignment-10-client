@@ -23,7 +23,7 @@ const ReviewDetails = () => {
       alert("Please log in to add to WatchList");
       return;
     }
-    fetch(`http://localhost:5000/watchList`, {
+    fetch(`https://assignment-10-server-beta-steel.vercel.app/watchList`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -74,7 +74,10 @@ const ReviewDetails = () => {
             </div>
           </div>
           <div className="card-actions justify-end ">
-            <button onClick={handleWatchList} className="btn btn-outline bg-white ">
+            <button
+              onClick={handleWatchList}
+              className="btn btn-outline bg-white "
+            >
               Add to WatchList
             </button>
           </div>

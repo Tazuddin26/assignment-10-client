@@ -32,7 +32,7 @@ const Register = () => {
         const createdAt = res?.user?.metadata?.creationTime;
         const signupUser = { name, email, image, createdAt };
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://assignment-10-server-beta-steel.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -53,7 +53,6 @@ const Register = () => {
 
   return (
     <div className=" min-h-screen max-w-7xl mx-auto ">
-
       {/* <div className="text-center mt-6">
         <h1 className="text-3xl font-bold text-gray-600">Registration now!</h1>
       </div> */}
@@ -112,7 +111,9 @@ const Register = () => {
               />
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-outline bg-blue-950 text-white">Register</button>
+              <button className="btn btn-outline bg-blue-950 text-white">
+                Register
+              </button>
             </div>
             <p className="mx-auto text-red-600 text-sm">{error}</p>
             <label className="label ">

@@ -3,7 +3,6 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 const AddReview = () => {
   const { user } = useContext(AuthContext);
-  
 
   const [genres, setGenres] = useState("Chosees Your Genres");
   const handleSubmitReview = (e) => {
@@ -30,7 +29,7 @@ const AddReview = () => {
     };
     console.log(allReview);
 
-    fetch("http://localhost:5000/addReviews", {
+    fetch("https://assignment-10-server-beta-steel.vercel.app/addReviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -40,7 +39,7 @@ const AddReview = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        e.target.reset()
+        e.target.reset();
         // sweet Alert set by data.insertedId
       });
   };
@@ -297,7 +296,9 @@ const AddReview = () => {
               </div>
             </div>
             <div className="form-control  mb-6 space-y-3 px-6">
-              <button className="btn btn-outline bg-blue-950 text-white">Submit</button>
+              <button className="btn btn-outline bg-blue-950 text-white">
+                Submit
+              </button>
             </div>
           </form>
         </div>

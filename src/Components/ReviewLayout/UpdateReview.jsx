@@ -30,13 +30,16 @@ const UpdateReview = () => {
       genres,
     };
     console.log(updateReview);
-    fetch(`http://localhost:5000/allReviews/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updateReview),
-    })
+    fetch(
+      `https://assignment-10-server-beta-steel.vercel.app/allReviews/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updateReview),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         // sweet Alert set by data.insertedId
@@ -176,7 +179,9 @@ const UpdateReview = () => {
               </div>
             </div>
             <div className="form-control  mb-6 space-y-3 px-6">
-              <button className="btn btn-outline bg-blue-950 text-white">Update</button>
+              <button className="btn btn-outline bg-blue-950 text-white">
+                Update
+              </button>
             </div>
           </form>
         </div>

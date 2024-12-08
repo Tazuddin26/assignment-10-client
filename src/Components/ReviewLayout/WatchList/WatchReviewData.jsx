@@ -7,17 +7,18 @@ import { DarkModeContext } from "../../../ThemeToggle/DarkModeProvider";
 
 const WatchReviewData = () => {
   const { user } = useContext(AuthContext);
-    const { theme } = useContext(DarkModeContext);
+  const { theme } = useContext(DarkModeContext);
   // const loadedReviews = useLoaderData();
 
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/watchList/${user?.email}`)
+    fetch(
+      `https://assignment-10-server-beta-steel.vercel.app/watchList/${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => setReviews(data))
       .catch((err) => console.error("Error fetching watch list:", err));
   }, [user?.email]);
-
 
   return (
     <div className="w-full max-w-7xl mx-auto mt-10 mb-10 min-h-screen ">

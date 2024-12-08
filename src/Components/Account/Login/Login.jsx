@@ -11,31 +11,30 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    signInUser(email, password)
-      .then((res) => {
-        console.log("login this", res);
-        const lastSignInTime = res?.user?.metadata?.lastSignInTime;
-        const lastLoginUser = { email, lastSignInTime };
+    signInUser(email, password).then((res) => {
+      console.log("login this", res);
+      const lastSignInTime = res?.user?.metadata?.lastSignInTime;
+      const lastLoginUser = { email, lastSignInTime };
 
-        fetch("http://localhost:5000/users", {
-          method: "PATCH",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(lastLoginUser),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log("sign in info DB", data);
-          });
-        toast.success("Successfully signed in!", {
-          position: "top-center",
-          autoClose: 3000,
-        });
-          e.target.reset();
-        navigate("/");
-        navigate(location.state.from);
+      fetch("https://assignment-10-server-beta-steel.vercel.app/users", {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(lastLoginUser),
       })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("sign in info DB", data);
+        });
+      toast.success("Successfully signed in!", {
+        position: "top-center",
+        autoClose: 3000,
+      });
+      e.target.reset();
+      navigate("/");
+      navigate(location.state.from);
+    });
   };
 
   const handleGoogleLogIn = () => {
@@ -81,7 +80,9 @@ const Login = () => {
             <p className="label-text-alt link link-hover">Forgot password?</p>
           </label>
           <div className="form-control mt-6 space-y-3">
-            <button className="btn btn-outline bg-blue-950 text-white">Login</button>
+            <button className="btn btn-outline bg-blue-950 text-white">
+              Login
+            </button>
             <button onClick={handleGoogleLogIn} className="btn btn-outline">
               Google
             </button>
