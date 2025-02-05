@@ -43,9 +43,9 @@ MAIN FEATURE IN THIS WEBSITE:
 
 <div>
   <img src="https://i.ibb.co.com/KcPt19PC/game1.png" width="300" height="200"/>
-   
+    <img width="12" />
   <img src="https://i.ibb.co.com/dw3fhsmw/game2.png" width="300" height="200"/>
- 
+  <img width="12" />
   <img src="https://i.ibb.co.com/Y7d74vsz/game4.png" width="300" height="200"/>
   
 </div>
