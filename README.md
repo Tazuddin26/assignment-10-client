@@ -42,11 +42,11 @@ MAIN FEATURE IN THIS WEBSITE:
 <h2>Project Picture</h2>
 
 <div>
-  <img src="https://i.ibb.co.com/KcPt19PC/game1.png"/>
+  <img src="https://i.ibb.co.com/KcPt19PC/game1.png" width="300" height="200"/>
    
-  <img src="https://i.ibb.co.com/dw3fhsmw/game2.png"/>
+  <img src="https://i.ibb.co.com/dw3fhsmw/game2.png" width="300" height="200"/>
  
-  <img src="https://i.ibb.co.com/Y7d74vsz/game4.png" width="200" height="200"/>
+  <img src="https://i.ibb.co.com/Y7d74vsz/game4.png" width="300" height="200"/>
   
 </div>
 
