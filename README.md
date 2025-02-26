@@ -1,5 +1,6 @@
 
 <h2 align="left">Geaming Reviewing Website</h2>
+<<<<<<< HEAD
 
     a Gamer Website that focuses on reviewing gaming content. This can include game reviews, hardware reviews, and other gaming-related content.
 
@@ -11,6 +12,23 @@
     1. you can login with Email and password.
     2. you can create register account with email & password.
     3. The Page Is Dark and White Mode.
+=======
+a Gamer Website that focuses on reviewing gaming content. This can include game reviews, hardware reviews, and other gaming-related content.
+
+
+Live Link:  https://assignment-10-client-d735b.web.app/
+
+
+
+
+
+
+MAIN FEATURE IN THIS WEBSITE:
+
+1. you can login with Email and password.
+2. you can create register account with email & password.
+3. The Page Is Dark and White Mode.
+>>>>>>> 84d2cfe09440f40d4f3c5b85f76a8f8b81430258
 
 
 <h2 align="left">Technology Used</h2>
@@ -46,6 +64,7 @@
   
 </div>
 
+<<<<<<< HEAD
 <h3>Install Dependencies: </h3>
   Install the required dependencies for both the client and server:
 
@@ -78,6 +97,8 @@
             npm run dev
 
 
+=======
+>>>>>>> 84d2cfe09440f40d4f3c5b85f76a8f8b81430258
 
 
 
