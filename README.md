@@ -45,7 +45,7 @@
   
 </div>
 
-<<<<<<< HEAD
+
 <h3>Install Dependencies: </h3>
   Install the required dependencies for both the client and server:
 
