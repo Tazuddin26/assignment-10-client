@@ -1,35 +1,16 @@
 
 <h2 align="left">Geaming Reviewing Website</h2>
-<<<<<<< HEAD
 
     a Gamer Website that focuses on reviewing gaming content. This can include game reviews, hardware reviews, and other gaming-related content.
 
 
-    Live Link:  https://assignment-10-client-d735b.web.app/
+    Live Link: https://assignment-10-client-d735b.web.app/
 
 <h2>MAIN FEATURE IN THIS WEBSITE:</h2>
 
     1. you can login with Email and password.
     2. you can create register account with email & password.
     3. The Page Is Dark and White Mode.
-=======
-a Gamer Website that focuses on reviewing gaming content. This can include game reviews, hardware reviews, and other gaming-related content.
-
-
-Live Link:  https://assignment-10-client-d735b.web.app/
-
-
-
-
-
-
-MAIN FEATURE IN THIS WEBSITE:
-
-1. you can login with Email and password.
-2. you can create register account with email & password.
-3. The Page Is Dark and White Mode.
->>>>>>> 84d2cfe09440f40d4f3c5b85f76a8f8b81430258
-
 
 <h2 align="left">Technology Used</h2>
 
@@ -86,7 +67,7 @@ MAIN FEATURE IN THIS WEBSITE:
 
 1.  Clone using the following repo link
 
-        Client Side: https://github.com/Tazuddin26/assignment-11-client.git
+        Client Side: https://github.com/Tazuddin26/assignment-10-client.git
      
 2. Go to the project folder and run npm install
         
@@ -97,8 +78,6 @@ MAIN FEATURE IN THIS WEBSITE:
             npm run dev
 
 
-=======
->>>>>>> 84d2cfe09440f40d4f3c5b85f76a8f8b81430258
 
 
 
